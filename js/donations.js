@@ -4,9 +4,8 @@
    - Copiar el IBAN de la cuenta bancaria al portapapeles.
    - Copiar el número de SINPE Móvil al portapapeles.
    - Mostrar un mensaje temporal de "¡Copiado!" como confirmación.
-   - Placeholder para el botón "Ver puntos de entrega" (donación en
-     especie), que se puede conectar más adelante a un modal o a otra
-     sección de la página.
+   - Modal "Puntos de Entrega" (donación en especie).
+   - Modal "Donación en especie vía Yo Me Uno".
    ===================================================================== */
 
 /**
@@ -50,6 +49,84 @@ function showCopiedFeedback(button) {
   void originalText;
 }
 
+/**
+ * Convierte un <div class="modal"> en un diálogo funcional: expone
+ * open()/close(), y engancha automáticamente el overlay, el botón "×"
+ * y cualquier otro elemento con [data-modal-close] dentro del modal,
+ * además de la tecla Escape.
+ * @param {HTMLElement} modal
+ */
+function setupModal(modal) {
+  const closeTriggers = modal.querySelectorAll('[data-modal-close]');
+
+  const open = () => {
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+  };
+
+  const close = () => {
+    modal.hidden = true;
+    document.body.style.overflow = '';
+  };
+
+  closeTriggers.forEach((el) => {
+    el.addEventListener('click', close);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !modal.hidden) {
+      close();
+    }
+  });
+
+  return { open, close };
+}
+
+const YOMEUNO_URL = 'https://www.yomeuno.com/costa-rica/organizaciones/fundacion-jecani';
+
+/**
+ * Controla el modal que ayuda a preparar una donación en especie antes
+ * de continuar en Yo Me Uno. Yo Me Uno no permite precargar su
+ * formulario desde un sitio externo, así que este modal es solo una
+ * guía para el donante: al enviarlo, únicamente lo redirigimos a la
+ * plataforma real en una pestaña nueva (los datos no viajan con él).
+ */
+function initModalEspecie() {
+  const openBtn = document.getElementById('btn-especie-yomeuno');
+  const modal = document.getElementById('modal-especie');
+
+  if (!openBtn || !modal) return;
+
+  const form = document.getElementById('form-especie-yomeuno');
+  const { open, close } = setupModal(modal);
+
+  openBtn.addEventListener('click', open);
+
+  if (form) {
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      window.open(YOMEUNO_URL, '_blank', 'noopener');
+      close();
+      form.reset();
+    });
+  }
+}
+
+/**
+ * Controla el modal con el listado de puntos de entrega para
+ * donaciones en especie (antes era un alert() nativo del navegador).
+ */
+function initModalPuntosEntrega() {
+  const openBtn = document.getElementById('btn-puntos-entrega');
+  const modal = document.getElementById('modal-puntos-entrega');
+
+  if (!openBtn || !modal) return;
+
+  const { open } = setupModal(modal);
+
+  openBtn.addEventListener('click', open);
+}
+
 function initDonations() {
 
   // -------------------- Botones de copiar (IBAN / SINPE) --------------------
@@ -68,20 +145,8 @@ function initDonations() {
     });
   });
 
-  // -------------------- Botón "Ver puntos de entrega" --------------------
-  const puntosEntregaBtn = document.getElementById('btn-puntos-entrega');
-
-  if (puntosEntregaBtn) {
-    puntosEntregaBtn.addEventListener('click', () => {
-      // TODO: reemplazar este alert por un modal o por scroll hacia
-      // una sección con el listado real de puntos de entrega.
-      alert(
-        'Puntos de entrega de donaciones en especie:\n\n' +
-        '- Sede principal: Calle Real, San José.\n' +
-        '- Próximamente más puntos de entrega en el país.'
-      );
-    });
-  }
+  initModalPuntosEntrega();
+  initModalEspecie();
 }
 
 window.initDonations = initDonations;

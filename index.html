@@ -350,6 +350,9 @@
               Donar en Yo Me Uno
               <span class="material-symbols-outlined">open_in_new</span>
             </a>
+            <button type="button" class="donation-card__link" id="btn-especie-yomeuno">
+              ¿Prefieres donar artículos? Regístralos aquí
+            </button>
           </div>
 
         </div>
@@ -583,6 +586,113 @@
       </div>
     </div>
   </footer>
+
+  <!-- =====================================================================
+       MODAL: DONACIÓN EN ESPECIE VÍA YO ME UNO
+       Ayuda al donante a preparar su donación en especie antes de
+       continuar en la plataforma de Yo Me Uno (BAC). Los datos NO se
+       envían a Yo Me Uno automáticamente: esa plataforma no permite
+       precargar formularios externos, así que el donante deberá
+       repetirlos allá, pero llega con la idea ya clara.
+       ===================================================================== -->
+  <div class="modal" id="modal-especie" hidden>
+    <div class="modal__overlay" data-modal-close></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modal-especie-title">
+      <button type="button" class="modal__close" data-modal-close aria-label="Cerrar">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+
+      <div class="modal__icon-wrapper">
+        <span class="material-symbols-outlined modal__icon">volunteer_activism</span>
+      </div>
+
+      <h3 class="modal__title" id="modal-especie-title">Dona en Especie</h3>
+      <p class="modal__subtitle">Fundación Jecani vía Yo Me Uno</p>
+      <p class="modal__desc">
+        Cuéntanos qué te gustaría donar. Te llevaremos a la plataforma segura de Yo Me Uno
+        para completar el proceso; allí deberás confirmar estos mismos datos.
+      </p>
+
+      <form class="modal__form" id="form-especie-yomeuno">
+        <div class="form-group">
+          <label class="form-label" for="especie-categoria">Categoría</label>
+          <select class="form-input" id="especie-categoria">
+            <option value="Alimentos">Alimentos</option>
+            <option value="Artículos de necesidad básica">Artículos de necesidad básica (p.e. cobijas, colchones, etc.)</option>
+            <option value="Equipos electrónicos">Equipos electrónicos</option>
+            <option value="Juguetes">Juguetes</option>
+            <option value="Libros">Libros</option>
+            <option value="Materiales para construcción">Materiales para construcción</option>
+            <option value="Medicamentos y artículos para cuidado personal">Medicamentos y artículos para cuidado personal (pañales, jabones)</option>
+            <option value="Mobiliario">Mobiliario</option>
+            <option value="Otros">Otros</option>
+            <option value="Ropa">Ropa</option>
+            <option value="Suministros escolares o de oficina">Suministros escolares o de oficina</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="especie-nombre">Nombre del artículo</label>
+          <input type="text" class="form-input" id="especie-nombre" placeholder="Ej.: Arroz, frijoles, cobijas..." />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="especie-descripcion">Descripción de tu donación</label>
+          <textarea class="form-input" id="especie-descripcion" rows="3" placeholder="Cuéntanos cantidad, estado y cualquier detalle útil"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn--primary donation-card__btn-full">
+          Continuar en Yo Me Uno
+          <span class="material-symbols-outlined">open_in_new</span>
+        </button>
+        <p class="modal__note">Se abrirá Yo Me Uno en una pestaña nueva; ahí confirmas tu donación.</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       MODAL: PUNTOS DE ENTREGA (DONACIÓN EN ESPECIE)
+       ===================================================================== -->
+  <div class="modal" id="modal-puntos-entrega" hidden>
+    <div class="modal__overlay" data-modal-close></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modal-puntos-title">
+      <button type="button" class="modal__close" data-modal-close aria-label="Cerrar">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+
+      <div class="modal__icon-wrapper">
+        <span class="material-symbols-outlined modal__icon">location_on</span>
+      </div>
+
+      <h3 class="modal__title" id="modal-puntos-title">Puntos de Entrega</h3>
+      <p class="modal__subtitle">Donación en Especie</p>
+      <p class="modal__desc">
+        Puedes acercar tu donación en especie a cualquiera de estos puntos, en el horario indicado.
+      </p>
+
+      <ul class="modal__list">
+        <li class="modal__list-item">
+          <span class="material-symbols-outlined modal__list-icon">home</span>
+          <div>
+            <p class="modal__list-title">Sede Principal</p>
+            <p class="modal__list-text">Calle Real, San José, Costa Rica</p>
+            <p class="modal__list-meta">Lunes a viernes, 8:00 a.m. – 4:00 p.m.</p>
+          </div>
+        </li>
+        <li class="modal__list-item modal__list-item--muted">
+          <span class="material-symbols-outlined modal__list-icon">schedule</span>
+          <div>
+            <p class="modal__list-title">Próximamente</p>
+            <p class="modal__list-text">Más puntos de entrega en el país.</p>
+          </div>
+        </li>
+      </ul>
+
+      <button type="button" class="btn btn--primary donation-card__btn-full" data-modal-close>
+        Entendido
+      </button>
+    </div>
+  </div>
 
   <!--
     =====================================================================
