@@ -12,7 +12,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-color: #f1f8e9; /* color de respaldo mientras carga la imagen */
+  background-color: #fbeee5; /* color de respaldo mientras carga la imagen */
 }
 
 /* -------------------- IMAGEN DE FONDO -------------------- */
@@ -68,7 +68,7 @@
   display: inline-block;
   padding: 0.25rem 1rem;
   border-radius: var(--radius-full);
-  background-color: rgba(45, 106, 79, 0.1);
+  background-color: rgba(var(--color-primary-rgb), 0.1);
   color: var(--color-primary);
   font-weight: 600;
   font-size: 0.75rem;

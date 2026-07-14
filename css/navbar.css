@@ -33,7 +33,7 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 
-  border-bottom: 1px solid rgba(45, 106, 79, 0.1);
+  border-bottom: 1px solid rgba(var(--color-primary-rgb), 0.1);
   box-shadow: 0 0 0 rgba(0, 0, 0, 0);
   transition: box-shadow var(--transition-base), background var(--transition-base);
 }
@@ -156,10 +156,10 @@
    al pasar el mouse para no competir con el hover normal del botón. */
 @keyframes navbarCtaPulse {
   0%, 100% {
-    box-shadow: 0 0 0 0 rgba(45, 106, 79, 0.35);
+    box-shadow: 0 0 0 0 rgba(var(--color-primary-rgb), 0.35);
   }
   50% {
-    box-shadow: 0 0 0 8px rgba(45, 106, 79, 0);
+    box-shadow: 0 0 0 8px rgba(var(--color-primary-rgb), 0);
   }
 }
 
@@ -191,7 +191,7 @@
   position: relative;
   width: 2.75rem;
   height: 2.75rem;
-  border: 1px solid rgba(45, 106, 79, 0.2);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.2);
   border-radius: var(--radius-full);
   background: transparent;
   cursor: pointer;
@@ -243,7 +243,7 @@
   justify-content: center;
   width: 2.5rem;
   height: 2.5rem;
-  border: 1px solid rgba(45, 106, 79, 0.2);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.2);
   border-radius: var(--radius-full);
   background: transparent;
   color: var(--color-primary);

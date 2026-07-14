@@ -58,7 +58,7 @@ h1, h2, h3, h4 {
 }
 
 :root[data-theme='dark'] ::-webkit-scrollbar-thumb {
-  background: #2d4a3a;
+  background: #2a3a5c;
 }
 
 /* -------------------- ICONOS (Material Symbols) -------------------- */
@@ -117,7 +117,7 @@ h1, h2, h3, h4 {
   color: var(--color-primary);
 }
 .btn--outline:hover {
-  background-color: rgba(45, 106, 79, 0.05);
+  background-color: rgba(var(--color-primary-rgb), 0.05);
 }
 
 .btn--small {
@@ -131,7 +131,7 @@ h1, h2, h3, h4 {
    y redes sociales. */
 .organic-card {
   background: var(--color-surface-card);
-  border: 1px solid rgba(45, 106, 79, 0.1);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.1);
   border-radius: var(--radius-md);
   transition: all var(--transition-base);
 }

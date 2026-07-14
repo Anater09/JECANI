@@ -1,18 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" preserveAspectRatio="xMidYMid slice">
   <defs>
     <linearGradient id="g4" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#081c15"/>
-      <stop offset="100%" stop-color="#1b4332"/>
+      <stop offset="0%" stop-color="#12204a"/>
+      <stop offset="100%" stop-color="#1b3b7e"/>
     </linearGradient>
   </defs>
   <rect width="800" height="600" fill="url(#g4)"/>
-  <g fill="#d2e8d4" opacity="0.95">
+  <g fill="#fbe3d6" opacity="0.95">
     <!-- rocket launch -->
     <path d="M400 200 C440 240 450 300 440 360 L360 360 C350 300 360 240 400 200 Z"/>
-    <circle cx="400" cy="270" r="16" fill="#081c15"/>
+    <circle cx="400" cy="270" r="16" fill="#12204a"/>
     <path d="M360 360 L330 410 L365 400 Z"/>
     <path d="M440 360 L470 410 L435 400 Z"/>
-    <path d="M385 375 L400 430 L415 375 Z" fill="#74c69d"/>
+    <path d="M385 375 L400 430 L415 375 Z" fill="#dc4a1e"/>
   </g>
-  <text x="400" y="540" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="30" fill="#f4f2ff" opacity="0.85">Lanzamiento</text>
+  <text x="400" y="540" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="30" fill="#fdf6f2" opacity="0.85">Lanzamiento</text>
 </svg>

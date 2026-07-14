@@ -72,7 +72,7 @@
     align-items: stretch;
     gap: 0;
     background: var(--color-surface);
-    border-bottom: 1px solid rgba(45, 106, 79, 0.1);
+    border-bottom: 1px solid rgba(var(--color-primary-rgb), 0.1);
     box-shadow: var(--shadow-lg);
     padding: 0.5rem 1.5rem 1.5rem;
 
@@ -113,7 +113,7 @@
   .navbar__menu .navbar__link {
     display: block;
     padding: 0.85rem 0;
-    border-bottom: 1px solid rgba(45, 106, 79, 0.08);
+    border-bottom: 1px solid rgba(var(--color-primary-rgb), 0.08);
   }
 
   .navbar__menu li:last-child .navbar__link {

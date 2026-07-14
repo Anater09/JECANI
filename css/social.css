@@ -43,7 +43,7 @@
 
 .social-card {
   background: var(--color-surface-card);
-  border: 1px solid rgba(45, 106, 79, 0.1);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.1);
   border-radius: var(--radius-md);
   padding: 2rem;
   display: flex;

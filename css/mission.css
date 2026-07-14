@@ -45,7 +45,7 @@
   padding: 1.5rem;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-xl);
-  border: 1px solid rgba(45, 106, 79, 0.1);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.1);
 }
 
 .mission__badge-header {
