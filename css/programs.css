@@ -1,0 +1,120 @@
+/* =====================================================================
+   PROGRAMS.CSS
+   Sección "Etapas de la Restauración": una grilla de 4 tarjetas, cada
+   una con una imagen, texto y una barrita de progreso que indica en
+   qué etapa del proceso se encuentra.
+   ===================================================================== */
+
+.programs {
+  padding: var(--section-padding-y) 0;
+  background-color: var(--color-surface-alt);
+}
+
+.programs__header {
+  max-width: var(--content-max-width);
+  margin: 0 auto 4rem auto;
+  padding: 0 var(--section-padding-x);
+  text-align: center;
+}
+
+.programs__title {
+  font-size: 2.25rem;
+  color: var(--color-text-main);
+  margin-bottom: 1rem;
+}
+
+.programs__title--highlight {
+  color: var(--color-primary);
+  font-style: italic;
+}
+
+.programs__subtitle {
+  color: var(--color-text-body);
+  max-width: 42rem;
+  margin: 0 auto;
+  font-style: italic;
+}
+
+/* -------------------- GRILLA DE TARJETAS -------------------- */
+.programs__grid {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 var(--section-padding-x);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas en escritorio */
+  gap: 2rem;
+}
+
+/* Cada tarjeta hereda la apariencia de .organic-card (definida en
+   global.css) y le añade su propia estructura interna. */
+.program-card {
+  background: var(--color-surface-card);
+  border: 1px solid rgba(45, 106, 79, 0.1);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.program-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.program-card__image-wrapper {
+  height: 13rem;
+  overflow: hidden;
+}
+
+.program-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.program-card__body {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.program-card__label {
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.program-card__title {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.program-card__desc {
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+  margin-bottom: 1.5rem;
+  flex-grow: 1; /* empuja la barra de progreso hacia abajo */
+}
+
+/* -------------------- BARRA DE PROGRESO -------------------- */
+.program-card__progress {
+  height: 0.25rem;
+  background-color: var(--color-surface-alt);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+/* El ancho de cada barra se controla con la variable CSS "--progress"
+   que se define directamente en el HTML (style="--progress: 50%"),
+   así no hace falta una clase distinta por cada etapa. */
+.program-card__progress-bar {
+  height: 100%;
+  width: var(--progress, 0%);
+  background-color: var(--color-primary);
+  border-radius: var(--radius-full);
+}

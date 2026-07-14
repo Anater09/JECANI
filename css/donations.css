@@ -1,0 +1,197 @@
+/* =====================================================================
+   DONATIONS.CSS
+   Sección "Donaciones": un panel grande de color verde claro que
+   contiene 4 tarjetas blancas, una por cada método de donación
+   (especie, transferencia, SINPE, PayPal).
+   ===================================================================== */
+
+.donations {
+  padding: var(--section-padding-y) var(--section-padding-x);
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+/* Panel grande de fondo verde claro que envuelve toda la sección */
+.donations__wrapper {
+  background-color: var(--color-primary-container);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+}
+
+.donations__panel {
+  padding: 4rem 4rem;
+}
+
+.donations__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.donations__badge {
+  display: inline-block;
+  padding: 0.25rem 1rem;
+  border-radius: var(--radius-full);
+  background-color: rgba(45, 106, 79, 0.1);
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+}
+
+.donations__title {
+  font-size: 2.5rem;
+  color: var(--color-on-primary-container);
+  margin-bottom: 1.5rem;
+}
+
+.donations__title--highlight {
+  font-style: italic;
+}
+
+.donations__desc {
+  font-size: 1.125rem;
+  color: var(--color-on-primary-container);
+  max-width: 48rem;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* -------------------- GRILLA DE MÉTODOS DE DONACIÓN -------------------- */
+.donations__grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.donation-card {
+  background: var(--color-surface-card);
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(45, 106, 79, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all var(--transition-base);
+  flex: 1 1 200px;
+  max-width: calc(25% - 1.125rem);
+}
+
+.donation-card:hover {
+  box-shadow: var(--shadow-xl);
+}
+
+.donation-card__icon-wrapper {
+  width: 4rem;
+  height: 4rem;
+  border-radius: var(--radius-md);
+  background-color: rgba(45, 106, 79, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+/* Al pasar el mouse por la tarjeta, el círculo del icono se rellena
+   de verde y el icono se vuelve blanco. */
+.donation-card:hover .donation-card__icon-wrapper {
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+
+.donation-card__icon {
+  font-size: 1.875rem;
+}
+
+.donation-card__title {
+  font-size: 1.25rem;
+  color: var(--color-text-main);
+  margin-bottom: 0.75rem;
+}
+
+.donation-card__desc {
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.donation-card__bank-info {
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+  text-align: left;
+  width: 100%;
+}
+
+.donation-card__bank-info p + p {
+  margin-top: 0.25rem;
+}
+
+.donation-card__sinpe-name {
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+  margin-bottom: 0.5rem;
+}
+
+.donation-card__sinpe-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+}
+
+/* Botón de texto (subrayado al pasar el mouse) usado para "Ver puntos
+   de entrega" y "Copiar IBAN" */
+.donation-card__link {
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 0.875rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.donation-card__link:hover {
+  text-decoration: underline;
+}
+
+.donation-card__link .material-symbols-outlined {
+  font-size: 1rem;
+}
+
+.donation-card__btn-full {
+  width: 100%;
+}
+
+/* -------------------- NOTA DE TRANSPARENCIA -------------------- */
+.donations__footer {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(0, 33, 17, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--color-on-primary-container);
+  opacity: 0.75;
+}
+
+.donations__footer p {
+  font-size: 0.75rem;
+}
+
+/* -------------------- ESTADO "COPIADO" (feedback para donations.js) -------------------- */
+/* Cuando el usuario copia el IBAN/número, se le añade esta clase
+   temporalmente al botón para confirmarle visualmente la acción. */
+.is-copied {
+  color: var(--color-primary) !important;
+  font-weight: 700;
+}

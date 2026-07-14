@@ -1,0 +1,114 @@
+/* =====================================================================
+   TESTIMONIALS.CSS
+   Sección "Voces de Esperanza": 3 tarjetas de testimonios en columna,
+   la del centro resaltada con un fondo verde muy suave.
+   ===================================================================== */
+
+.testimonials {
+  padding: var(--section-padding-y) 0;
+  background-color: var(--color-surface);
+}
+
+.testimonials__header {
+  max-width: var(--content-max-width);
+  margin: 0 auto 4rem auto;
+  padding: 0 var(--section-padding-x);
+  text-align: center;
+}
+
+.testimonials__title {
+  font-size: 2.25rem;
+  color: var(--color-text-main);
+  margin-bottom: 1rem;
+}
+
+.testimonials__title--highlight {
+  color: var(--color-primary);
+  font-style: italic;
+}
+
+.testimonials__subtitle {
+  color: var(--color-text-light);
+}
+
+/* -------------------- GRILLA DE TESTIMONIOS -------------------- */
+.testimonials__grid {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 var(--section-padding-x);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.testimonial-card {
+  background: var(--color-surface-card);
+  border: 1px solid rgba(45, 106, 79, 0.1);
+  border-radius: var(--radius-md);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: all var(--transition-base);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+/* La tarjeta del medio se destaca con un fondo verde suave */
+.testimonial-card--featured {
+  background-color: rgba(45, 106, 79, 0.05);
+  border-color: rgba(45, 106, 79, 0.2);
+}
+
+.testimonial-card__quote-icon {
+  font-size: 2.25rem;
+  color: rgba(45, 106, 79, 0.3);
+  margin-bottom: 1.5rem;
+}
+
+.testimonial-card__text {
+  color: var(--color-text-body);
+  font-style: italic;
+  margin-bottom: 2rem;
+  flex-grow: 1;
+  line-height: 1.7;
+}
+
+.testimonial-card__author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Círculo con las iniciales de la persona */
+.testimonial-card__avatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary-container);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* Variante del avatar para la tarjeta destacada: fondo verde sólido */
+.testimonial-card__avatar--filled {
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+
+.testimonial-card__name {
+  font-weight: 700;
+  color: var(--color-text-main);
+}
+
+.testimonial-card__role {
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+}

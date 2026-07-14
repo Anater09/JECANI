@@ -1,0 +1,171 @@
+/* =====================================================================
+   GLOBAL.CSS
+   Estilos base que aplican a TODO el sitio: tipografía general, scroll
+   suave, y "componentes" reutilizables en varias secciones como
+   botones (.btn), tarjetas (.organic-card) y los iconos de Material
+   Symbols. Esto reemplaza las clases utilitarias de Tailwind que se
+   repetían en todo el HTML original (btn-primary, organic-card, etc.)
+   ===================================================================== */
+
+/* -------------------- BASE DEL DOCUMENTO -------------------- */
+html {
+  /* El navbar es "fixed" y siempre cubre los primeros px de la
+     pantalla: este offset hace que, al saltar a una sección (clic en
+     el menú o un enlace #ancla), el destino no quede escondido
+     debajo de él. */
+  scroll-padding-top: var(--navbar-height);
+}
+
+body {
+  background-color: var(--color-surface);
+  color: var(--color-text-main);
+  font-family: var(--font-sans);
+  scroll-behavior: smooth; /* al hacer clic en el menú, el scroll se anima */
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+
+  /* El navbar es "position: fixed" (ver navbar.css) y queda fuera del
+     flujo normal del documento, así que reservamos aquí el mismo
+     espacio para que el Hero no arranque escondido debajo de él. */
+  padding-top: var(--navbar-height);
+}
+
+/* Todo lo que tenga esta clase usa la tipografía serif de los títulos */
+.font-serif,
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+}
+
+/* Selección de texto con los colores de marca */
+::selection {
+  background-color: var(--color-primary-container);
+  color: var(--color-on-primary-container);
+}
+
+/* -------------------- SCROLLBAR PERSONALIZADO -------------------- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+:root[data-theme='dark'] ::-webkit-scrollbar-thumb {
+  background: #2d4a3a;
+}
+
+/* -------------------- ICONOS (Material Symbols) -------------------- */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+}
+
+/* -------------------- CONTENEDOR GENÉRICO -------------------- */
+/* Centra el contenido y limita su ancho máximo, igual que "max-w-7xl mx-auto" */
+.container {
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--section-padding-x);
+  padding-right: var(--section-padding-x);
+}
+
+/* -------------------- BOTONES -------------------- */
+/* Botón base: define forma, tipografía y transición. Se combina con
+   un modificador (--primary, --outline, --small) para el color. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 2rem;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all var(--transition-fast);
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.btn--primary {
+  background-color: var(--color-primary);
+  color: var(--color-text-white);
+}
+.btn--primary:hover {
+  background-color: var(--color-primary-hover);
+  transform: scale(1.02);
+}
+
+.btn--outline {
+  background-color: transparent;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+.btn--outline:hover {
+  background-color: rgba(45, 106, 79, 0.05);
+}
+
+.btn--small {
+  padding: 0.6rem 1.5rem;
+  font-size: 0.875rem;
+}
+
+/* -------------------- TARJETA "ORGÁNICA" -------------------- */
+/* Tarjeta blanca con esquinas muy redondeadas y una pequeña animación
+   de "levantarse" al pasar el mouse. La usan: programas, testimonios
+   y redes sociales. */
+.organic-card {
+  background: var(--color-surface-card);
+  border: 1px solid rgba(45, 106, 79, 0.1);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+}
+
+.organic-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+/* -------------------- ANIMACIÓN DE ENTRADA (usada por animations.js) -------------------- */
+/* Estado inicial: invisible y desplazado hacia abajo. */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Cuando JS agrega esta clase (elemento visible en pantalla), aparece. */
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* -------------------- UTILIDADES -------------------- */
+.text-center {
+  text-align: center;
+}
+
+/* Oculta visualmente pero mantiene accesible para lectores de pantalla */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}

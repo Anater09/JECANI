@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 900" width="1000" height="900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="commBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d2e8d4"/>
+      <stop offset="100%" stop-color="#a8d5ba"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="900" fill="url(#commBg)"/>
+  <!-- silhouettes of a community standing together -->
+  <g fill="#1b4332" opacity="0.85">
+    <circle cx="230" cy="330" r="60"/>
+    <path d="M120 700 Q120 470 230 470 Q340 470 340 700 Z"/>
+
+    <circle cx="500" cy="270" r="72"/>
+    <path d="M370 700 Q370 420 500 420 Q630 420 630 700 Z"/>
+
+    <circle cx="780" cy="330" r="60"/>
+    <path d="M670 700 Q670 470 780 470 Q890 470 890 700 Z"/>
+  </g>
+  <g fill="#40916c" opacity="0.5">
+    <circle cx="500" cy="270" r="90" fill="none" stroke="#40916c" stroke-width="6" stroke-dasharray="4 10"/>
+  </g>
+  <rect x="0" y="700" width="1000" height="200" fill="#081c15" opacity="0.15"/>
+</svg>

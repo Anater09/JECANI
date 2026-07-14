@@ -1,0 +1,103 @@
+/* =====================================================================
+   HERO.CSS
+   Sección de portada (primera pantalla que ve el usuario). Contiene una
+   imagen de fondo con un degradado encima para que el texto resalte,
+   y el título/CTA principal del sitio.
+   ===================================================================== */
+
+.hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #f1f8e9; /* color de respaldo mientras carga la imagen */
+}
+
+/* -------------------- IMAGEN DE FONDO -------------------- */
+.hero__background {
+  position: absolute;
+  inset: 0; /* top/right/bottom/left = 0, cubre todo el hero */
+  z-index: 0;
+}
+
+.hero__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Degradado blanco -> transparente para que el texto de la izquierda
+   se lea bien sobre la foto (Hero_fondo.jpg). El punto medio queda
+   justo donde termina la caja de texto (~48% del ancho) para que el
+   texto tenga respaldo parejo en todo su ancho, y de ahí en adelante
+   se termina de aclarar antes (72% en vez de 100%) para que el resto
+   del grupo se vea nítido más rápido en vez de quedar difuminado
+   hasta el borde derecho. */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  background: linear-gradient(
+    to right,
+    var(--hero-overlay-start) 0%,
+    var(--hero-overlay-mid) 48%,
+    var(--hero-overlay-end) 72%
+  );
+}
+
+/* -------------------- CONTENIDO -------------------- */
+.hero__content {
+  position: relative;
+  z-index: 20;
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 5rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+}
+
+.hero__text-box {
+  max-width: 36rem;
+}
+
+.hero__badge {
+  display: inline-block;
+  padding: 0.25rem 1rem;
+  border-radius: var(--radius-full);
+  background-color: rgba(45, 106, 79, 0.1);
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+}
+
+.hero__title {
+  font-size: 4.5rem;
+  line-height: 1.1;
+  color: var(--color-text-main);
+  margin-bottom: 1.5rem;
+}
+
+.hero__title--highlight {
+  color: var(--color-primary);
+  font-style: italic;
+}
+
+.hero__description {
+  font-size: 1.125rem;
+  color: var(--color-text-body);
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
