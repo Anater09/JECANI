@@ -1,0 +1,122 @@
+/* =====================================================================
+   VARIABLES.CSS
+   Aquí viven todas las "variables CSS" (custom properties) del sitio:
+   colores, tipografías, radios de borde, sombras, etc.
+   Cambiar un valor aquí actualiza automáticamente todo el sitio,
+   sin tener que buscar y reemplazar en cada archivo.
+
+   MODO OSCURO: al final de este archivo hay un segundo bloque,
+   ":root[data-theme='dark']", que redefine estas mismas variables con
+   otros valores. Como el resto del CSS del sitio siempre usa
+   var(--color-...) en vez de colores directos, con solo cambiar el
+   atributo "data-theme" del <html> (lo hace js/theme.js) todo el sitio
+   cambia de paleta sin tocar ningún otro archivo.
+   ===================================================================== */
+
+:root {
+
+  /* -------------------- COLORES PRINCIPALES -------------------- */
+  --color-surface: #fbf8ff;              /* Fondo general claro del sitio */
+  --color-surface-alt: #f8f9fa;          /* Fondo alterno (secciones "zebra") */
+  --color-surface-container: #f4f2ff;    /* Fondo de tarjetas/contenedores */
+  --color-surface-card: #ffffff;         /* Fondo de tarjetas elevadas (programas, testimonios, etc.) */
+  --color-surface-input: #f9fafb;        /* Fondo de campos de formulario */
+
+  --color-primary: #2d6a4f;              /* Verde principal (marca) */
+  --color-primary-hover: #1b4332;        /* Verde principal al pasar el mouse */
+  --color-primary-container: #d2e8d4;    /* Verde claro de fondo (badges, panel donaciones) */
+  --color-on-primary-container: #002111; /* Texto sobre fondos verdes claros */
+
+  --color-secondary: #4f6354;            /* Verde grisáceo para textos secundarios del navbar */
+  --color-outline: #717971;              /* Color de bordes suaves */
+
+  /* -------------------- TEXTO -------------------- */
+  --color-text-main: #191c19;            /* Texto principal (casi negro) */
+  --color-text-body: #4b5563;            /* Texto de párrafos (gris) */
+  --color-text-muted: #6b7280;           /* Texto secundario / descripciones */
+  --color-text-light: #9ca3af;           /* Texto terciario (fechas, notas pequeñas) */
+  --color-text-white: #ffffff;
+
+  /* -------------------- FOOTER -------------------- */
+  /* El footer ya es un panel verde oscuro en el diseño original, así
+     que se mantiene igual en ambos temas (no se redefine más abajo). */
+  --color-footer-bg: #1b2b23;
+  --color-footer-text: rgba(255, 255, 255, 0.7);
+
+  /* -------------------- NAVBAR -------------------- */
+  --color-navbar-bg: rgba(251, 248, 255, 0.85);
+  --color-navbar-bg-scrolled: rgba(251, 248, 255, 0.7);
+
+  /* -------------------- DEGRADADO DEL HERO -------------------- */
+  --hero-overlay-start: rgba(255, 255, 255, 0.9);
+  --hero-overlay-mid: rgba(255, 255, 255, 0.4);
+  --hero-overlay-end: rgba(255, 255, 255, 0);
+
+  /* -------------------- TIPOGRAFÍA -------------------- */
+  --font-serif: 'Source Serif 4', serif;   /* Usada en títulos */
+  --font-sans: 'Inter', sans-serif;        /* Usada en el resto del texto */
+
+  /* -------------------- RADIOS DE BORDE -------------------- */
+  --radius-sm: 0.75rem;
+  --radius-md: 1.5rem;
+  --radius-lg: 2rem;
+  --radius-xl: 3rem;
+  --radius-full: 9999px;
+
+  /* -------------------- SOMBRAS -------------------- */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 12px 24px -8px rgba(45, 106, 79, 0.15);
+  --shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+  /* -------------------- ESPACIADOS COMUNES -------------------- */
+  --section-padding-y: 6rem;      /* separación vertical entre secciones */
+  --section-padding-x: 5rem;      /* separación horizontal (escritorio) */
+  --content-max-width: 80rem;     /* ancho máximo del contenido (max-w-7xl) */
+  --navbar-height: 5rem;          /* alto del navbar (fixed); usado para compensar con padding-top en el body */
+
+  /* -------------------- TRANSICIONES -------------------- */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+}
+
+/* =====================================================================
+   MODO OSCURO
+   Se activa agregando data-theme="dark" al <html> (ver js/theme.js).
+   Solo redefine colores: tipografía, radios, espaciados y transiciones
+   se comparten con el modo claro.
+   ===================================================================== */
+:root[data-theme='dark'] {
+
+  --color-surface: #0f1a15;
+  --color-surface-alt: #13221a;
+  --color-surface-container: #182b21;
+  --color-surface-card: #182b21;
+  --color-surface-input: #13221a;
+
+  --color-primary: #40916c;
+  --color-primary-hover: #52b788;
+  --color-primary-container: #1f4030;
+  --color-on-primary-container: #d8f0df;
+
+  --color-secondary: #9db8a7;
+  --color-outline: #35493d;
+
+  --color-text-main: #edf5f0;
+  --color-text-body: #c3d1c9;
+  --color-text-muted: #97a89e;
+  --color-text-light: #7c8f83;
+  --color-text-white: #ffffff;
+
+  --color-navbar-bg: rgba(15, 26, 21, 0.85);
+  --color-navbar-bg-scrolled: rgba(15, 26, 21, 0.65);
+
+  --hero-overlay-start: rgba(8, 16, 12, 0.92);
+  --hero-overlay-mid: rgba(8, 16, 12, 0.5);
+  --hero-overlay-end: rgba(8, 16, 12, 0);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 12px 24px -8px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+}

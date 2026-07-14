@@ -1,0 +1,160 @@
+/* =====================================================================
+   CONTACT.CSS
+   Sección de contacto: a la izquierda la información + mapa, a la
+   derecha el formulario de contacto dentro de una tarjeta blanca.
+   ===================================================================== */
+
+.contact {
+  padding: var(--section-padding-y) var(--section-padding-x);
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem;
+  align-items: start;
+}
+
+/* -------------------- COLUMNA IZQUIERDA -------------------- */
+.contact__title {
+  font-size: 2.25rem;
+  color: var(--color-text-main);
+  margin-bottom: 1.5rem;
+}
+
+.contact__title--highlight {
+  color: var(--color-primary);
+  font-style: italic;
+}
+
+.contact__desc {
+  color: var(--color-text-light);
+  margin-bottom: 3rem;
+}
+
+.contact__details {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.contact__detail {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.contact__detail-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-md);
+  background-color: rgba(45, 106, 79, 0.1);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact__detail-title {
+  font-weight: 700;
+  color: var(--color-text-main);
+}
+
+.contact__detail-text {
+  color: var(--color-text-light);
+}
+
+.contact__detail-link {
+  margin-top: 0.5rem;
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.contact__detail-link:hover {
+  text-decoration: underline;
+}
+
+/* Mapa incrustado (Google Maps) con un filtro sutil para que combine
+   con la paleta de colores del sitio. */
+.contact__map {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  filter: sepia(0.2) contrast(0.9) saturate(0.8);
+}
+
+.contact__map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* -------------------- COLUMNA DERECHA: FORMULARIO -------------------- */
+.contact__form-wrapper {
+  background: var(--color-surface-card);
+  padding: 3.5rem;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  border: 1px solid rgba(45, 106, 79, 0.1);
+}
+
+.contact__form-title {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.form-input {
+  width: 100%;
+  background-color: var(--color-surface-input);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 1rem 1.5rem;
+  color: var(--color-text-main);
+  transition: box-shadow var(--transition-fast), background-color var(--transition-base), color var(--transition-base);
+}
+
+.form-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(45, 106, 79, 0.3);
+}
+
+.contact__form-submit {
+  width: 100%;
+  padding: 1.25rem;
+  font-size: 1.125rem;
+  margin-top: 0.5rem;
+  box-shadow: 0 10px 20px -5px rgba(45, 106, 79, 0.2);
+}
+
+.contact__form-note {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+}

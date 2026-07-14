@@ -1,0 +1,369 @@
+/* =====================================================================
+   DONATIONS.CSS
+   Sección "Donaciones": un panel grande de color verde claro que
+   contiene 4 tarjetas blancas, una por cada método de donación
+   (especie, transferencia, SINPE, PayPal).
+   ===================================================================== */
+
+.donations {
+  padding: var(--section-padding-y) var(--section-padding-x);
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+/* Panel grande de fondo verde claro que envuelve toda la sección */
+.donations__wrapper {
+  background-color: var(--color-primary-container);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+}
+
+.donations__panel {
+  padding: 4rem 4rem;
+}
+
+.donations__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.donations__badge {
+  display: inline-block;
+  padding: 0.25rem 1rem;
+  border-radius: var(--radius-full);
+  background-color: rgba(45, 106, 79, 0.1);
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+}
+
+.donations__title {
+  font-size: 2.5rem;
+  color: var(--color-on-primary-container);
+  margin-bottom: 1.5rem;
+}
+
+.donations__title--highlight {
+  font-style: italic;
+}
+
+.donations__desc {
+  font-size: 1.125rem;
+  color: var(--color-on-primary-container);
+  max-width: 48rem;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* -------------------- GRILLA DE MÉTODOS DE DONACIÓN -------------------- */
+.donations__grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.donation-card {
+  background: var(--color-surface-card);
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(45, 106, 79, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all var(--transition-base);
+  flex: 1 1 calc(33.333% - 1rem);
+  max-width: calc(33.333% - 1rem);
+}
+
+.donation-card:hover {
+  box-shadow: var(--shadow-xl);
+}
+
+.donation-card__icon-wrapper {
+  width: 4rem;
+  height: 4rem;
+  border-radius: var(--radius-md);
+  background-color: rgba(45, 106, 79, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+/* Al pasar el mouse por la tarjeta, el círculo del icono se rellena
+   de verde y el icono se vuelve blanco. */
+.donation-card:hover .donation-card__icon-wrapper {
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+
+.donation-card__icon {
+  font-size: 1.875rem;
+}
+
+.donation-card__title {
+  font-size: 1.25rem;
+  color: var(--color-text-main);
+  margin-bottom: 0.75rem;
+}
+
+.donation-card__desc {
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.donation-card__bank-info {
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+  text-align: left;
+  width: 100%;
+}
+
+.donation-card__bank-info p + p {
+  margin-top: 0.25rem;
+}
+
+.donation-card__sinpe-name {
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+  margin-bottom: 0.5rem;
+}
+
+.donation-card__sinpe-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+}
+
+/* Botón de texto (subrayado al pasar el mouse) usado para "Ver puntos
+   de entrega" y "Copiar IBAN" */
+.donation-card__link {
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 0.875rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.donation-card__link:hover {
+  text-decoration: underline;
+}
+
+.donation-card__link .material-symbols-outlined {
+  font-size: 1rem;
+}
+
+.donation-card__btn-full {
+  width: 100%;
+}
+
+/* -------------------- NOTA DE TRANSPARENCIA -------------------- */
+.donations__footer {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(0, 33, 17, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--color-on-primary-container);
+  opacity: 0.75;
+}
+
+.donations__footer p {
+  font-size: 0.75rem;
+}
+
+/* -------------------- ESTADO "COPIADO" (feedback para donations.js) -------------------- */
+/* Cuando el usuario copia el IBAN/número, se le añade esta clase
+   temporalmente al botón para confirmarle visualmente la acción. */
+.is-copied {
+  color: var(--color-primary) !important;
+  font-weight: 700;
+}
+
+/* =====================================================================
+   MODAL: DONACIÓN EN ESPECIE VÍA YO ME UNO
+   ===================================================================== */
+.modal[hidden] {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 33, 17, 0.55);
+  backdrop-filter: blur(2px);
+}
+
+.modal__panel {
+  position: relative;
+  width: 100%;
+  max-width: 28rem;
+  max-height: calc(100vh - 3rem);
+  overflow-y: auto;
+  background: var(--color-surface-card);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  padding: 3rem 2.5rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.modal__close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-light);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.modal__close:hover {
+  background-color: var(--color-surface-container);
+  color: var(--color-text-main);
+}
+
+.modal__icon-wrapper {
+  width: 4rem;
+  height: 4rem;
+  border-radius: var(--radius-md);
+  background-color: rgba(45, 106, 79, 0.1);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.modal__icon {
+  font-size: 1.875rem;
+}
+
+.modal__title {
+  font-size: 1.375rem;
+  color: var(--color-text-main);
+  margin-bottom: 0.25rem;
+}
+
+.modal__subtitle {
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.modal__desc {
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+  margin-bottom: 2rem;
+}
+
+.modal__form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  text-align: left;
+}
+
+.modal__form select.form-input {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.25rem;
+  padding-right: 3rem;
+}
+
+.modal__note {
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+/* -------------------- LISTA DE PUNTOS DE ENTREGA -------------------- */
+.modal__list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.modal__list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  text-align: left;
+  background-color: var(--color-surface-container);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+}
+
+.modal__list-item--muted {
+  background-color: transparent;
+  border: 1px dashed var(--color-outline);
+  opacity: 0.75;
+}
+
+.modal__list-icon {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-full);
+  background-color: rgba(45, 106, 79, 0.1);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+
+.modal__list-title {
+  font-weight: 700;
+  color: var(--color-text-main);
+  font-size: 0.9375rem;
+}
+
+.modal__list-text {
+  color: var(--color-text-body);
+  font-size: 0.875rem;
+}
+
+.modal__list-meta {
+  color: var(--color-text-light);
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}

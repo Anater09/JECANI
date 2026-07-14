@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fundación Jecani | Restauración Humana con Propósito</title>
+
+  <!--
+    =====================================================================
+    MODO OSCURO: aplicar el tema ANTES de pintar la página
+    Este script es intencionalmente pequeño, inline y SIN "defer" (a
+    diferencia de todos los demás, ver el final del <body>) para que se
+    ejecute de inmediato, antes de que el navegador pinte el primer
+    frame. Así evitamos el "flash" de tema claro antes de cambiar a
+    oscuro cuando esa es la preferencia guardada del usuario.
+    ===================================================================== -->
+  <script>
+    (function () {
+      var savedTheme = localStorage.getItem('jecani-theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = savedTheme || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
+  <!--
+    =====================================================================
+    FUENTES EXTERNAS (Google Fonts)
+    - Source Serif 4 -> se usa en títulos (clase .font-serif)
+    - Inter          -> tipografía base del cuerpo del sitio
+    - Material Symbols -> librería de iconos (los <span class="material-symbols-outlined">)
+    =====================================================================
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+  <!--
+    =====================================================================
+    HOJAS DE ESTILO PROPIAS
+    Se cargan en orden de "cascada": primero lo genérico, luego lo
+    específico de cada sección, y al final las reglas de responsive.
+    =====================================================================
+  -->
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/mission.css" />
+  <link rel="stylesheet" href="css/programs.css" />
+  <link rel="stylesheet" href="css/donations.css" />
+  <link rel="stylesheet" href="css/testimonials.css" />
+  <link rel="stylesheet" href="css/social.css" />
+  <link rel="stylesheet" href="css/contact.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+  <!-- =====================================================================
+       BARRA DE NAVEGACIÓN (navbar)
+       Se queda "pegada" arriba (sticky) al hacer scroll.
+       ===================================================================== -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar__container">
+
+      <!-- Logo / enlace a inicio -->
+      <a href="#inicio" class="navbar__logo">
+        <img src="assets/img/logo-jecani.svg" alt="Logo Fundación Jecani" class="navbar__logo-img" />
+      </a>
+
+      <!-- Menú de enlaces (en pantallas pequeñas se abre/cierra con el botón hamburguesa, ver responsive.css y navigation.js) -->
+      <ul class="navbar__menu" id="navbar-menu">
+        <li><a href="#inicio" class="navbar__link">Inicio</a></li>
+        <li><a href="#mission" class="navbar__link">Misión</a></li>
+        <li><a href="#programs" class="navbar__link">Programas</a></li>
+        <li><a href="#donations" class="navbar__link">Donaciones</a></li>
+        <li><a href="#testimonials" class="navbar__link">Testimonios</a></li>
+        <li><a href="#contact" class="navbar__link">Contacto</a></li>
+        <li><a href="#social" class="navbar__link">Redes Sociales</a></li>
+      </ul>
+
+      <!-- Botón principal de llamado a la acción + modo oscuro -->
+      <div class="navbar__actions">
+        <a href="#donations" class="btn btn--primary btn--small">Donar Ahora</a>
+
+        <!-- Modo oscuro: alterna data-theme en <html> (ver js/theme.js) -->
+        <button type="button" class="navbar__theme-toggle" id="theme-toggle" aria-label="Cambiar a modo oscuro">
+          <span class="material-symbols-outlined">dark_mode</span>
+        </button>
+      </div>
+
+      <!-- Botón hamburguesa: solo visible en pantallas pequeñas (ver responsive.css).
+           Las 3 barras se transforman en una "X" con CSS al abrir el menú. -->
+      <button type="button" class="navbar__toggle" id="navbar-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navbar-menu">
+        <span class="navbar__toggle-bar"></span>
+        <span class="navbar__toggle-bar"></span>
+        <span class="navbar__toggle-bar"></span>
+      </button>
+
+    </div>
+  </nav>
+
+  <!-- =====================================================================
+       HERO (sección de bienvenida / portada)
+       ===================================================================== -->
+  <header class="hero" id="inicio">
+    <!-- Imagen de fondo + degradado para que el texto sea legible -->
+    <div class="hero__background">
+      <div class="hero__overlay"></div>
+      <img src="assets/img/Hero_fondo.jpg" alt="Grupo de beneficiarios de Fundación Jecani en un momento de oración en el porche de la casa hogar" class="hero__bg-img" />
+    </div>
+
+    <div class="hero__content">
+      <div class="hero__text-box">
+        <span class="hero__badge">Restauración Humana Integral</span>
+
+        <h1 class="hero__title">
+          Restauramos <span class="hero__title--highlight">Vidas</span> con Dignidad y Amor
+        </h1>
+
+        <p class="hero__description">
+          Acompañamos a personas en situación de vulnerabilidad en un viaje de transformación real,
+          combinando apoyo profesional con una comunidad que cree en las segundas oportunidades.
+        </p>
+
+        <div class="hero__actions">
+          <a href="#programs" class="btn btn--primary">
+            Conoce el Proceso
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </a>
+          <a href="#mission" class="btn btn--outline">Nuestra Historia</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       MISIÓN Y VISIÓN
+       ===================================================================== -->
+  <section class="mission" id="mission">
+    <div class="mission__grid">
+
+      <!-- Imagen ilustrativa + tarjeta flotante de "Impacto Real" -->
+      <div class="mission__media">
+        <div class="mission__image-wrapper">
+          <img src="assets/img/comunidad-jecani.svg" alt="Comunidad Jecani" class="mission__image" />
+        </div>
+
+        <div class="mission__badge-card">
+          <div class="mission__badge-header">
+            <span class="material-symbols-outlined mission__badge-icon">groups</span>
+            <span class="mission__badge-title">Impacto Real</span>
+          </div>
+          <p class="mission__badge-text">Más que números, somos una familia que crece cada día.</p>
+        </div>
+      </div>
+
+      <!-- Texto de misión, visión y valores -->
+      <div class="mission__content">
+        <div class="mission__intro">
+          <h2 class="mission__title">Nuestra Misión</h2>
+          <p class="mission__text">
+            Facilitar un ecosistema de transformación integral donde individuos en situación de
+            vulnerabilidad redescubran su potencial a través de metodologías innovadoras y
+            acompañamiento empático.
+          </p>
+        </div>
+
+        <div class="mission__features">
+          <div class="mission__feature">
+            <span class="material-symbols-outlined mission__feature-icon">auto_graph</span>
+            <h3 class="mission__feature-title">Visión</h3>
+            <p class="mission__feature-text">
+              Ser el referente de vanguardia en la restauración humana, integrando ciencia, fe y
+              tecnología social.
+            </p>
+          </div>
+
+          <div class="mission__feature">
+            <span class="material-symbols-outlined mission__feature-icon">favorite</span>
+            <h3 class="mission__feature-title">Valores</h3>
+            <p class="mission__feature-text">
+              Transparencia radical, amor operativo y excelencia en cada intervención técnica.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       ETAPAS DE LA RESTAURACIÓN (Programas)
+       ===================================================================== -->
+  <section class="programs" id="programs">
+    <div class="programs__header">
+      <h2 class="programs__title">Etapas de la <span class="programs__title--highlight">Restauración</span></h2>
+      <p class="programs__subtitle">Un camino estructurado diseñado para el crecimiento personal sostenible.</p>
+    </div>
+
+    <div class="programs__grid">
+
+      <!-- Etapa 01 -->
+      <article class="program-card">
+        <div class="program-card__image-wrapper">
+          <img src="assets/img/etapa-acogida.svg" alt="Acogida" class="program-card__image" />
+        </div>
+        <div class="program-card__body">
+          <span class="program-card__label">01. Acogida</span>
+          <h4 class="program-card__title">Encuentro Radical</h4>
+          <p class="program-card__desc">Aceptación inmediata y un entorno de seguridad controlada para el inicio.</p>
+          <div class="program-card__progress">
+            <div class="program-card__progress-bar" style="--progress: 25%;"></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Etapa 02 -->
+      <article class="program-card">
+        <div class="program-card__image-wrapper">
+          <img src="assets/img/etapa-terapia.svg" alt="Psicoterapia" class="program-card__image" />
+        </div>
+        <div class="program-card__body">
+          <span class="program-card__label">02. Terapia</span>
+          <h4 class="program-card__title">Reingeniería Personal</h4>
+          <p class="program-card__desc">Terapia grupal y personalizada para desmantelar patrones de conducta nocivos.</p>
+          <div class="program-card__progress">
+            <div class="program-card__progress-bar" style="--progress: 50%;"></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Etapa 03 -->
+      <article class="program-card">
+        <div class="program-card__image-wrapper">
+          <img src="assets/img/etapa-laboral.svg" alt="Capacitación laboral" class="program-card__image" />
+        </div>
+        <div class="program-card__body">
+          <span class="program-card__label">03. Capacitación</span>
+          <h4 class="program-card__title">Nuevas Habilidades</h4>
+          <p class="program-card__desc">Adquisición de habilidades profesionales para la reinserción en la economía.</p>
+          <div class="program-card__progress">
+            <div class="program-card__progress-bar" style="--progress: 75%;"></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Etapa 04 -->
+      <article class="program-card">
+        <div class="program-card__image-wrapper">
+          <img src="assets/img/etapa-lanzamiento.svg" alt="Lanzamiento" class="program-card__image" />
+        </div>
+        <div class="program-card__body">
+          <span class="program-card__label">04. Lanzamiento</span>
+          <h4 class="program-card__title">Agentes de Cambio</h4>
+          <p class="program-card__desc">Regreso a la sociedad como líderes comunitarios y ciudadanos íntegros.</p>
+          <div class="program-card__progress">
+            <div class="program-card__progress-bar" style="--progress: 100%;"></div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       DONACIONES
+       ===================================================================== -->
+  <section class="donations" id="donations">
+    <div class="donations__wrapper">
+      <div class="donations__panel">
+
+        <div class="donations__header">
+          <span class="donations__badge">Tu Impacto</span>
+          <h2 class="donations__title">Tu Generosidad <span class="donations__title--highlight">Multiplica</span> Esperanza</h2>
+          <p class="donations__desc">
+            Cada aporte es una semilla de cambio. Elige el método que mejor se adapte a ti para
+            apoyar nuestra misión de transformación.
+          </p>
+        </div>
+
+        <div class="donations__grid">
+
+          <!-- Donación en especie -->
+          <div class="donation-card">
+            <div class="donation-card__icon-wrapper">
+              <span class="material-symbols-outlined donation-card__icon">volunteer_activism</span>
+            </div>
+            <h3 class="donation-card__title">Donación en Especie</h3>
+            <p class="donation-card__desc">Recibimos ropa, alimentos y artículos de primera necesidad para nuestros beneficiarios.</p>
+            <button type="button" class="donation-card__link" id="btn-puntos-entrega">
+              Ver puntos de entrega
+              <span class="material-symbols-outlined">location_on</span>
+            </button>
+          </div>
+
+          <!-- Transferencia bancaria -->
+          <div class="donation-card">
+            <div class="donation-card__icon-wrapper">
+              <span class="material-symbols-outlined donation-card__icon">account_balance</span>
+            </div>
+            <h3 class="donation-card__title">Transferencia Bancaria</h3>
+            <div class="donation-card__bank-info">
+              <p><strong>BCR:</strong> <span id="iban-bcr">CR05015201001012345678</span></p>
+              <p><strong>BN:</strong> <span id="iban-bn">CR92015100010012345678</span></p>
+              <p>Céd. Jurídica: 3-002-XXXXXX</p>
+            </div>
+            <button type="button" class="donation-card__link" id="btn-copiar-iban" data-copy-target="iban-bcr">
+              Copiar IBAN
+              <span class="material-symbols-outlined">content_copy</span>
+            </button>
+          </div>
+
+          <!-- SINPE Móvil -->
+          <div class="donation-card">
+            <div class="donation-card__icon-wrapper">
+              <span class="material-symbols-outlined donation-card__icon">smartphone</span>
+            </div>
+            <h3 class="donation-card__title">SINPE Móvil</h3>
+            <p class="donation-card__sinpe-name">A nombre de: Fundación Jecani</p>
+            <p class="donation-card__sinpe-number" id="sinpe-number">8888-8888</p>
+            <button type="button" class="btn btn--primary donation-card__btn-full" id="btn-copiar-sinpe" data-copy-target="sinpe-number">
+              Copiar número
+            </button>
+          </div>
+
+          <!-- PayPal -->
+          <div class="donation-card">
+            <div class="donation-card__icon-wrapper">
+              <span class="material-symbols-outlined donation-card__icon">payments</span>
+            </div>
+            <h3 class="donation-card__title">PayPal</h3>
+            <p class="donation-card__desc">Realiza tu donación de forma segura desde cualquier parte del mundo.</p>
+            <a href="#" target="_blank" rel="noopener" class="btn btn--primary donation-card__btn-full">
+              Donar con PayPal
+              <span class="material-symbols-outlined">open_in_new</span>
+            </a>
+          </div>
+
+          <!-- Yo Me Uno (BAC) -->
+          <div class="donation-card">
+            <div class="donation-card__icon-wrapper">
+              <span class="material-symbols-outlined donation-card__icon">handshake</span>
+            </div>
+            <h3 class="donation-card__title">Yo Me Uno</h3>
+            <p class="donation-card__desc">Dona con tu tarjeta BAC Credomatic a través de la plataforma Yo Me Uno, sin comisiones adicionales.</p>
+            <a href="https://www.yomeuno.com/costa-rica/organizaciones/fundacion-jecani" target="_blank" rel="noopener" class="btn btn--primary donation-card__btn-full">
+              Donar en Yo Me Uno
+              <span class="material-symbols-outlined">open_in_new</span>
+            </a>
+            <button type="button" class="donation-card__link" id="btn-especie-yomeuno">
+              ¿Prefieres donar artículos? Regístralos aquí
+            </button>
+          </div>
+
+        </div>
+
+        <div class="donations__footer">
+          <span class="material-symbols-outlined">verified_user</span>
+          <p>Transparencia garantizada. Todos los fondos se destinan directamente a nuestros programas de restauración.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       TESTIMONIOS
+       ===================================================================== -->
+  <section class="testimonials" id="testimonials">
+    <div class="testimonials__header">
+      <h2 class="testimonials__title">Voces de <span class="testimonials__title--highlight">Esperanza</span></h2>
+      <p class="testimonials__subtitle">Testimonios que nos impulsan a seguir adelante.</p>
+    </div>
+
+    <div class="testimonials__grid">
+
+      <article class="testimonial-card">
+        <span class="material-symbols-outlined testimonial-card__quote-icon">format_quote</span>
+        <p class="testimonial-card__text">
+          "Jecani no me dio una segunda oportunidad, me dio las herramientas para construir una
+          vida que nunca creí merecer."
+        </p>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__avatar">CR</div>
+          <div>
+            <p class="testimonial-card__name">Carlos R.</p>
+            <p class="testimonial-card__role">Graduado 2021</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="testimonial-card testimonial-card--featured">
+        <span class="material-symbols-outlined testimonial-card__quote-icon">format_quote</span>
+        <p class="testimonial-card__text">
+          "Aprendí que mi pasado no era una cadena, sino un dato más en mi evolución. Hoy lidero
+          mi propio emprendimiento."
+        </p>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__avatar testimonial-card__avatar--filled">AM</div>
+          <div>
+            <p class="testimonial-card__name">Andrés M.</p>
+            <p class="testimonial-card__role">Graduado 2022</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="testimonial-card">
+        <span class="material-symbols-outlined testimonial-card__quote-icon">format_quote</span>
+        <p class="testimonial-card__text">
+          "Como familia, recuperamos a nuestra hija. El acompañamiento no fue solo para ella, sino
+          para todos nosotros."
+        </p>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__avatar">EG</div>
+          <div>
+            <p class="testimonial-card__name">Elena G.</p>
+            <p class="testimonial-card__role">Familiar</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       REDES SOCIALES
+       ===================================================================== -->
+  <section class="social" id="social">
+    <div class="social__header">
+      <h2 class="social__title">Conectemos en <span class="social__title--highlight">Redes</span></h2>
+      <p class="social__subtitle">Sigue de cerca nuestra labor diaria y sé parte de la comunidad.</p>
+    </div>
+
+    <div class="social__grid">
+
+      <a href="#" class="social-card social-card--instagram">
+        <span class="social-card__icon">
+          <img src="assets/icons/instagram.svg" alt="" aria-hidden="true" />
+        </span>
+        <span class="social-card__name">Instagram</span>
+      </a>
+
+      <a href="#" class="social-card social-card--facebook">
+        <span class="social-card__icon">
+          <img src="assets/icons/facebook.svg" alt="" aria-hidden="true" />
+        </span>
+        <span class="social-card__name">Facebook</span>
+      </a>
+
+      <a href="#" class="social-card social-card--tiktok">
+        <span class="social-card__icon">
+          <img src="assets/icons/tiktok.svg" alt="" aria-hidden="true" />
+        </span>
+        <span class="social-card__name">TikTok</span>
+      </a>
+
+      <a href="#" class="social-card social-card--youtube">
+        <span class="social-card__icon">
+          <img src="assets/icons/youtube.svg" alt="" aria-hidden="true" />
+        </span>
+        <span class="social-card__name">YouTube</span>
+      </a>
+
+      <a href="#" class="social-card social-card--whatsapp">
+        <span class="social-card__icon">
+          <img src="assets/icons/whatsapp.svg" alt="" aria-hidden="true" />
+        </span>
+        <span class="social-card__name">WhatsApp</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       CONTACTO + MAPA
+       ===================================================================== -->
+  <section class="contact" id="contact">
+    <div class="contact__grid">
+
+      <!-- Columna izquierda: datos + mapa -->
+      <div class="contact__info">
+        <h2 class="contact__title">¿Listo para el <br /><span class="contact__title--highlight">Cambio?</span></h2>
+        <p class="contact__desc">
+          Estamos aquí para escucharte y guiarte. Cada gran transformación comienza con un primer
+          contacto humano.
+        </p>
+
+        <div class="contact__details">
+          <div class="contact__detail">
+            <span class="material-symbols-outlined contact__detail-icon">location_on</span>
+            <div>
+              <p class="contact__detail-title">Nuestra Sede</p>
+              <p class="contact__detail-text">Calle Real, San José, Costa Rica</p>
+              <button type="button" class="contact__detail-link">Ver indicaciones en Waze</button>
+            </div>
+          </div>
+
+          <div class="contact__detail">
+            <span class="material-symbols-outlined contact__detail-icon">call</span>
+            <div>
+              <p class="contact__detail-title">Teléfono</p>
+              <p class="contact__detail-text">+(506) 2222-2222</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact__map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125744.17387431326!2d-84.17551061917523!3d9.93332915354972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e342c5138c5b%3A0x19280998976b2518!2sSan%20Jos%C3%A9!5e0!3m2!1ses!2scr!4v1716335000000!5m2!1ses!2scr"
+            width="100%" height="100%" style="border:0;" loading="lazy" allowfullscreen title="Mapa de ubicación de Fundación Jecani">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Columna derecha: formulario -->
+      <div class="contact__form-wrapper">
+        <h3 class="contact__form-title">Envíenos un mensaje</h3>
+
+        <form class="contact__form" id="contact-form" novalidate>
+          <div class="form-group">
+            <label for="nombre" class="form-label">Nombre Completo</label>
+            <input type="text" id="nombre" name="nombre" class="form-input" placeholder="Escribe tu nombre..." required />
+          </div>
+
+          <div class="form-group">
+            <label for="telefono" class="form-label">Número Telefónico</label>
+            <input type="tel" id="telefono" name="telefono" class="form-input" placeholder="8888-8888" required />
+          </div>
+
+          <button type="submit" class="btn btn--primary contact__form-submit">SOLICITAR INFORMACIÓN</button>
+          <p class="contact__form-note">Le contactaremos en menos de 24 horas.</p>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       PIE DE PÁGINA (footer)
+       ===================================================================== -->
+  <footer class="footer">
+    <div class="footer__grid">
+
+      <div class="footer__brand">
+        <img src="assets/img/logo-jecani.svg" alt="Logo Fundación Jecani" class="footer__logo" />
+        <p class="footer__desc">
+          Liderando la vanguardia en restauración humana mediante la convergencia de empatía
+          radical y rigor profesional en Costa Rica.
+        </p>
+        <div class="footer__social">
+          <a href="#">LinkedIn</a>
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+        </div>
+      </div>
+
+      <div class="footer__column">
+        <h5 class="footer__heading">Secciones</h5>
+        <ul class="footer__links">
+          <li><a href="#mission">Sobre Nosotros</a></li>
+          <li><a href="#programs">Programas</a></li>
+          <li><a href="#donations">Donaciones</a></li>
+          <li><a href="#contact">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__column">
+        <h5 class="footer__heading">Newsletter</h5>
+        <p class="footer__newsletter-text">Recibe historias de éxito y noticias.</p>
+        <form class="footer__newsletter-form" id="newsletter-form">
+          <input type="email" class="footer__newsletter-input" placeholder="Email" required />
+          <button type="submit" class="footer__newsletter-button">Unirme</button>
+        </form>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <div class="footer__copyright">© 2024 Fundación Jecani. Restaurando dignidad, transformando futuros.</div>
+      <div class="footer__legal">
+        <a href="#">Privacidad</a>
+        <a href="#">Términos</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       MODAL: DONACIÓN EN ESPECIE VÍA YO ME UNO
+       Ayuda al donante a preparar su donación en especie antes de
+       continuar en la plataforma de Yo Me Uno (BAC). Los datos NO se
+       envían a Yo Me Uno automáticamente: esa plataforma no permite
+       precargar formularios externos, así que el donante deberá
+       repetirlos allá, pero llega con la idea ya clara.
+       ===================================================================== -->
+  <div class="modal" id="modal-especie" hidden>
+    <div class="modal__overlay" data-modal-close></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modal-especie-title">
+      <button type="button" class="modal__close" data-modal-close aria-label="Cerrar">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+
+      <div class="modal__icon-wrapper">
+        <span class="material-symbols-outlined modal__icon">volunteer_activism</span>
+      </div>
+
+      <h3 class="modal__title" id="modal-especie-title">Dona en Especie</h3>
+      <p class="modal__subtitle">Fundación Jecani vía Yo Me Uno</p>
+      <p class="modal__desc">
+        Cuéntanos qué te gustaría donar. Te llevaremos a la plataforma segura de Yo Me Uno
+        para completar el proceso; allí deberás confirmar estos mismos datos.
+      </p>
+
+      <form class="modal__form" id="form-especie-yomeuno">
+        <div class="form-group">
+          <label class="form-label" for="especie-categoria">Categoría</label>
+          <select class="form-input" id="especie-categoria">
+            <option value="Alimentos">Alimentos</option>
+            <option value="Artículos de necesidad básica">Artículos de necesidad básica (p.e. cobijas, colchones, etc.)</option>
+            <option value="Equipos electrónicos">Equipos electrónicos</option>
+            <option value="Juguetes">Juguetes</option>
+            <option value="Libros">Libros</option>
+            <option value="Materiales para construcción">Materiales para construcción</option>
+            <option value="Medicamentos y artículos para cuidado personal">Medicamentos y artículos para cuidado personal (pañales, jabones)</option>
+            <option value="Mobiliario">Mobiliario</option>
+            <option value="Otros">Otros</option>
+            <option value="Ropa">Ropa</option>
+            <option value="Suministros escolares o de oficina">Suministros escolares o de oficina</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="especie-nombre">Nombre del artículo</label>
+          <input type="text" class="form-input" id="especie-nombre" placeholder="Ej.: Arroz, frijoles, cobijas..." />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="especie-descripcion">Descripción de tu donación</label>
+          <textarea class="form-input" id="especie-descripcion" rows="3" placeholder="Cuéntanos cantidad, estado y cualquier detalle útil"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn--primary donation-card__btn-full">
+          Continuar en Yo Me Uno
+          <span class="material-symbols-outlined">open_in_new</span>
+        </button>
+        <p class="modal__note">Se abrirá Yo Me Uno en una pestaña nueva; ahí confirmas tu donación.</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       MODAL: PUNTOS DE ENTREGA (DONACIÓN EN ESPECIE)
+       ===================================================================== -->
+  <div class="modal" id="modal-puntos-entrega" hidden>
+    <div class="modal__overlay" data-modal-close></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modal-puntos-title">
+      <button type="button" class="modal__close" data-modal-close aria-label="Cerrar">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+
+      <div class="modal__icon-wrapper">
+        <span class="material-symbols-outlined modal__icon">location_on</span>
+      </div>
+
+      <h3 class="modal__title" id="modal-puntos-title">Puntos de Entrega</h3>
+      <p class="modal__subtitle">Donación en Especie</p>
+      <p class="modal__desc">
+        Puedes acercar tu donación en especie a cualquiera de estos puntos, en el horario indicado.
+      </p>
+
+      <ul class="modal__list">
+        <li class="modal__list-item">
+          <span class="material-symbols-outlined modal__list-icon">home</span>
+          <div>
+            <p class="modal__list-title">Sede Principal</p>
+            <p class="modal__list-text">Calle Real, San José, Costa Rica</p>
+            <p class="modal__list-meta">Lunes a viernes, 8:00 a.m. – 4:00 p.m.</p>
+          </div>
+        </li>
+        <li class="modal__list-item modal__list-item--muted">
+          <span class="material-symbols-outlined modal__list-icon">schedule</span>
+          <div>
+            <p class="modal__list-title">Próximamente</p>
+            <p class="modal__list-text">Más puntos de entrega en el país.</p>
+          </div>
+        </li>
+      </ul>
+
+      <button type="button" class="btn btn--primary donation-card__btn-full" data-modal-close>
+        Entendido
+      </button>
+    </div>
+  </div>
+
+  <!--
+    =====================================================================
+    SCRIPTS
+    Se cargan al final del body para no bloquear el renderizado del HTML,
+    y con "defer" para que se ejecuten en orden una vez el DOM esté listo.
+    =====================================================================
+  -->
+  <script src="js/navigation.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/donations.js" defer></script>
+  <script src="js/theme.js" defer></script>
+  <script src="js/main.js" defer></script>
+
+</body>
+</html>

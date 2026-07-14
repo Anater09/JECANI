@@ -1,0 +1,247 @@
+/* =====================================================================
+   RESPONSIVE.CSS
+   Reglas de "media queries" para que el sitio se vea bien en tablets
+   y celulares. Se carga AL FINAL de todos los CSS a propósito: así
+   sus reglas tienen prioridad y "sobrescriben" los estilos de
+   escritorio definidos en los demás archivos cuando la pantalla es
+   más pequeña.
+
+   Breakpoints usados (siguiendo el criterio de Tailwind):
+   - lg:  1024px  (equivalente a "lg:" de Tailwind)
+   - md:  768px   (equivalente a "md:" de Tailwind)
+   - sm:  640px   (equivalente a "sm:" de Tailwind)
+   ===================================================================== */
+
+/* =====================================================================
+   1) PANTALLAS MEDIANAS Y MENORES (tablets) < 1024px
+   ===================================================================== */
+@media (max-width: 1024px) {
+
+  /* --- Hero: el grid de 2 columnas pasa a 1 sola --- */
+  .hero__content {
+    grid-template-columns: 1fr;
+  }
+
+  /* --- Programas: de 4 columnas a 2 --- */
+  .programs__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* --- Donaciones: de 4 columnas a 2 --- */
+  .donation-card {
+    flex-basis: calc(50% - 0.75rem);
+    max-width: calc(50% - 0.75rem);
+  }
+
+  /* --- Testimonios: de 3 columnas a 1 --- */
+  .testimonials__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* --- Redes sociales: de 5 columnas a 3 --- */
+  .social__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* =====================================================================
+   2) PANTALLAS PEQUEÑAS (tablets verticales / celulares grandes) < 768px
+   ===================================================================== */
+@media (max-width: 768px) {
+
+  /* --- Espaciados generales: reducimos el padding lateral --- */
+  :root {
+    --section-padding-x: 1.5rem;
+  }
+
+  .navbar__container {
+    padding: 1rem 1.5rem;
+  }
+
+  /* --- Navbar: los enlaces se convierten en un menú desplegable
+         controlado por el botón hamburguesa (ver navigation.js).
+         En vez de aparecer de golpe (display:none/flex), se desliza
+         hacia abajo con un fundido; los <li> además entran en cascada
+         (ver transition-delay más abajo). --- */
+  .navbar__menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--color-surface);
+    border-bottom: 1px solid rgba(45, 106, 79, 0.1);
+    box-shadow: var(--shadow-lg);
+    padding: 0.5rem 1.5rem 1.5rem;
+
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  /* Clase que agrega navigation.js al hacer clic en el botón hamburguesa */
+  .navbar__menu--open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  /* Cascada de entrada: cada enlace se desvanece con un pequeño retraso
+     respecto al anterior, dando sensación de "goteo" ordenado. */
+  .navbar__menu li {
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .navbar__menu--open li {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .navbar__menu--open li:nth-child(1) { transition-delay: 0.03s; }
+  .navbar__menu--open li:nth-child(2) { transition-delay: 0.06s; }
+  .navbar__menu--open li:nth-child(3) { transition-delay: 0.09s; }
+  .navbar__menu--open li:nth-child(4) { transition-delay: 0.12s; }
+  .navbar__menu--open li:nth-child(5) { transition-delay: 0.15s; }
+  .navbar__menu--open li:nth-child(6) { transition-delay: 0.18s; }
+  .navbar__menu--open li:nth-child(7) { transition-delay: 0.21s; }
+
+  .navbar__menu .navbar__link {
+    display: block;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(45, 106, 79, 0.08);
+  }
+
+  .navbar__menu li:last-child .navbar__link {
+    border-bottom: none;
+  }
+
+  /* El subrayado animado es un detalle pensado para el menú horizontal
+     de escritorio; en el desplegable móvil ya existe el borde inferior
+     como separador, así que lo apagamos para no duplicar la señal. */
+  .navbar__menu .navbar__link::after {
+    display: none;
+  }
+
+  .navbar__menu .navbar__link--active {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  .navbar__toggle {
+    display: inline-flex;
+  }
+
+  /* --- Hero: título y textos más pequeños para que quepan --- */
+  .hero__title {
+    font-size: 2.75rem;
+  }
+
+  .hero__text-box {
+    max-width: 100%;
+  }
+
+  /* --- Misión: el grid pasa a una columna y la imagen va primero --- */
+  .mission__grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .mission__media {
+    order: 1;
+  }
+
+  .mission__content {
+    order: 2;
+  }
+
+  .mission__badge-card {
+    right: 1rem;
+    bottom: -1rem;
+  }
+
+  .mission__features {
+    grid-template-columns: 1fr;
+  }
+
+  /* --- Programas: 1 sola columna --- */
+  .programs__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* --- Donaciones: 1 sola columna y menos padding interno --- */
+  .donation-card {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+
+  .donations__panel {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .donations__title {
+    font-size: 1.875rem;
+  }
+
+  /* --- Redes sociales: 2 columnas --- */
+  .social__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* --- Contacto: 1 sola columna, formulario debajo del mapa --- */
+  .contact__grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .contact__form-wrapper {
+    padding: 2rem;
+  }
+
+  /* --- Footer: 1 sola columna --- */
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* =====================================================================
+   3) CELULARES PEQUEÑOS < 640px
+   ===================================================================== */
+@media (max-width: 640px) {
+
+  .hero__title {
+    font-size: 2.25rem;
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+  }
+
+  /* --- Redes sociales: 2 columnas se mantiene, solo ajustamos el gap --- */
+  .social__grid {
+    gap: 1rem;
+  }
+
+  .donations__panel {
+    padding: 2rem 1rem;
+  }
+
+  .modal__panel {
+    padding: 2.5rem 1.5rem 2rem;
+  }
+}

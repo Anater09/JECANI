@@ -1,0 +1,88 @@
+/* =====================================================================
+   SOCIAL.CSS
+   Sección "Conectemos en Redes": una grilla de tarjetas, una por cada
+   red social, cada una con su icono e nombre.
+   ===================================================================== */
+
+.social {
+  padding: var(--section-padding-y) 0;
+  background-color: var(--color-surface-alt);
+}
+
+.social__header {
+  max-width: var(--content-max-width);
+  margin: 0 auto 4rem auto;
+  padding: 0 var(--section-padding-x);
+  text-align: center;
+}
+
+.social__title {
+  font-size: 2.25rem;
+  color: var(--color-text-main);
+  margin-bottom: 1rem;
+}
+
+.social__title--highlight {
+  color: var(--color-primary);
+  font-style: italic;
+}
+
+.social__subtitle {
+  color: var(--color-text-light);
+}
+
+/* -------------------- GRILLA DE REDES -------------------- */
+.social__grid {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 var(--section-padding-x);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+}
+
+.social-card {
+  background: var(--color-surface-card);
+  border: 1px solid rgba(45, 106, 79, 0.1);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  transition: all var(--transition-base);
+}
+
+.social-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  background-color: var(--color-surface-card);
+}
+
+.social-card__icon {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-card__icon img {
+  width: 2rem;
+  height: 2rem;
+}
+
+.social-card__name {
+  font-weight: 700;
+  color: var(--color-text-main);
+}
+
+/* Cada red social conserva su color de marca al pasar el mouse,
+   aplicado como un filtro sutil sobre el ícono (opcional, se puede
+   ajustar según el SVG final que se use en /assets/icons). */
+.social-card--instagram:hover .social-card__icon { color: #db2777; }
+.social-card--facebook:hover  .social-card__icon { color: #2563eb; }
+.social-card--tiktok:hover    .social-card__icon { color: #000000; }
+.social-card--youtube:hover   .social-card__icon { color: #dc2626; }
+.social-card--whatsapp:hover  .social-card__icon { color: #16a34a; }

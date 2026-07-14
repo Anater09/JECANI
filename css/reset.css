@@ -1,0 +1,80 @@
+/* =====================================================================
+   RESET.CSS
+   Objetivo: eliminar las diferencias de estilo que cada navegador aplica
+   por defecto (márgenes, tamaños de fuente, listas con viñetas, etc.)
+   para que el diseño se vea igual en todos lados y partamos de una
+   base "limpia" y predecible.
+   ===================================================================== */
+
+/* Todo elemento usará "border-box": el padding y el borde se cuentan
+   DENTRO del ancho/alto definido, y no se suman por fuera.
+   Esto evita muchos dolores de cabeza al calcular tamaños. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Evita que el usuario "arrastre" imágenes o que se vean con espacios
+   raros por ser elementos "inline" por defecto. */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Los inputs, botones, etc. heredan la tipografía de la página en vez
+   de usar la fuente por defecto del sistema operativo. */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+/* Quita el subrayado y color azul por defecto de los enlaces;
+   cada componente define su propio color en su hoja de estilos. */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Quita los estilos nativos de las listas (viñetas y numeración). */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Los botones no traen fondo, borde ni cursor de "click" por defecto
+   en todos los navegadores; lo forzamos aquí. */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Los títulos no fuerzan un tamaño de fuente específico aquí:
+   cada sección define su propio tamaño según el diseño. */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: inherit;
+}
+
+/* Hace que las tablas (si se usan en el futuro) no tengan espacios
+   extra entre celdas. */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* html/body ocupan el 100% del alto disponible como base. */
+html,
+body {
+  height: 100%;
+}
